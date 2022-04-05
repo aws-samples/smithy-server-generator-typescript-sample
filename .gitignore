@@ -1,0 +1,7 @@
+**/node_modules/
+**/build/
+**/dist/
+**/.gradle/
+/server/cdk.out/
+/.yarn/install-state.gz
+/server/.aws-sam/

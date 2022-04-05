@@ -1,0 +1,14 @@
+{
+  "version" : "1.0",
+  "outputDirectory" : "build/output",
+  "projections" : {
+    "ts-client": {
+      "plugins": {
+        "typescript-codegen": {
+          "package" : "@smithy-demo/string-client",
+          "packageVersion": "0.0.1"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "version" : "1.0",
+  "outputDirectory" : "build/output",
+  "projections" : {
+    "ts-server" : {
+      "plugins": {
+        "typescript-ssdk-codegen" : {
+          "package" : "@smithy-demo/string-wizard-service-ssdk",
+          "packageVersion": "0.0.1"
+        }
+      }
+    },
+    "apigateway" : {
+      "imports" : ["model/"],
+      "plugins" : {
+        "openapi": {
+          "service": "software.amazon.smithy.demo#StringWizard",
+          "protocol": "aws.protocols#restJson1",
+          "apiGatewayType" : "REST"
+        }
+      }
+    }
+  }
+}

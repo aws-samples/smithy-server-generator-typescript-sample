@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "outDir": "./dist"
+  },
+  "exclude": ["node_modules/", "**/*.spec.ts"],
+  "include": ["src/", "lib/", "bin/"]
+}

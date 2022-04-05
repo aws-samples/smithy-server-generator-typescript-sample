@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "compilerOptions": {
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "outDir": "./dist"
+  },
+  "exclude": ["node_modules/", "**/*.spec.ts"],
+  "include": ["bin/"]
+}
