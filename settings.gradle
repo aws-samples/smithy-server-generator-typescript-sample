@@ -6,7 +6,7 @@ pluginManagement {
 
 rootProject.name = 'string-wizard-service'
 
-include ':model'
+includeBuild('./model')
 
 include 'server-codegen'
 project(':server-codegen').projectDir = file('server/codegen')
