@@ -16,8 +16,7 @@ Before beginning:
 - Install
     - [JDK](https://aws.amazon.com/corretto/) >= 8
     - [NodeJS](https://nodejs.org/en/download/) >= 14
-    - [Yarn](https://yarnpkg.com/getting-started/install) >= 2
-    - [SAM CDK beta](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-cdk-getting-started.html#serverless-cdk-getting-started-prerequisites)
+- Enable [corepack](https://nodejs.org/api/corepack.html#enabling-the-feature) by running `corepack enable`
 - Set up an [AWS account](https://portal.aws.amazon.com/billing/signup) if you do not have one
 - [Configure your workstation](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_prerequisites)
   so the CDK can use your account
@@ -26,11 +25,11 @@ Before beginning:
 
 1. After the first checkout, you will need to kick off the initial code generation and build by running:
     ```bash
-    ./gradlew build && yarn install
+    ./gradlew build && yarn install && yarn build
     ```
    After this initial build, `yarn build` in the root of the project will regenerate the client and server and recompile
    all of the code.
-2. To deploy the service, run `cd server && yarn cdk deploy`. When complete, the CDK will print out the endpoint URL
+2. To deploy the service, run `yarn workspace string-server cdk deploy`. When complete, the CDK will print out the endpoint URL
    for your newly deployed service.
    >   Note: this step will create resources in your AWS account that may incur charges.
 3. To test your service, switch to the `typescript-client` directory and use `yarn str-length` to call the `Length`
