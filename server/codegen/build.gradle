@@ -28,6 +28,7 @@ buildscript {
         classpath "software.amazon.smithy:smithy-openapi:1.19.0"
         classpath "software.amazon.smithy:smithy-aws-traits:1.19.0"
         classpath "software.amazon.smithy:smithy-aws-apigateway-openapi:1.19.0"
+        classpath "software.amazon.smithy:smithy-cli:1.19.0"
     }
 }
 

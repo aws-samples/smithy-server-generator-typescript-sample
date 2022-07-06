@@ -17,6 +17,9 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath "software.amazon.smithy:smithy-cli:1.19.0"
+    }
 }
 
 plugins {
