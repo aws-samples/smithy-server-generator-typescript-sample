@@ -1,21 +1,22 @@
-import { AnyPrincipal, Effect, PolicyDocument, PolicyStatement, ServicePrincipal } from "@aws-cdk/aws-iam";
-import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
-import { LogGroup } from "@aws-cdk/aws-logs";
-import { readFileSync } from "fs";
-import * as path from "path";
+import { StringWizardServiceOperations } from "@smithy-demo/string-wizard-service-ssdk";
+import * as cdk from "aws-cdk-lib";
 import {
   AccessLogFormat,
   ApiDefinition,
   LogGroupLogDestination,
   MethodLoggingLevel,
   SpecRestApi,
-} from "@aws-cdk/aws-apigateway";
-import { Construct, Stack, StackProps } from "@aws-cdk/core";
-import { StringWizardServiceOperations } from "@smithy-demo/string-wizard-service-ssdk";
-import {Runtime} from "@aws-cdk/aws-lambda";
+} from "aws-cdk-lib/aws-apigateway";
+import { AnyPrincipal, Effect, PolicyDocument, PolicyStatement, ServicePrincipal } from "aws-cdk-lib/aws-iam";
+import {Runtime} from "aws-cdk-lib/aws-lambda";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+import { LogGroup } from "aws-cdk-lib/aws-logs";
+import { Construct } from "constructs";
+import { readFileSync } from "fs";
+import * as path from "path";
 
-export class CdkStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
+export class CdkStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const logGroup = new LogGroup(this, "ApiLogs");
@@ -29,9 +30,9 @@ export class CdkStack extends Stack {
       (acc, operation) => ({
         ...acc,
         [operation]: new NodejsFunction(this, operation + "Function", {
-          entry: path.join(__dirname, `../src/${entry_points[operation]}.ts`),
+          entry: path.join(__dirname, `../dist/src/${entry_points[operation]}.js`),
           handler: "lambdaHandler",
-          runtime: Runtime.NODEJS_14_X,
+          runtime: Runtime.NODEJS_18_X,
           bundling: {
             minify: true,
             tsconfig: path.join(__dirname, "../tsconfig.json"),
