@@ -12,6 +12,10 @@
     "build:server": "cd server && yarn build",
     "build": "yarn generate && yarn build:client && yarn build:server"
   },
+  "resolutions": {
+    "@babel/traverse": "^7.23.2",
+    "typedoc": "^0.23.28"
+  },
   "devDependencies": {
     "esbuild": "^0.14.27",
     "rimraf": "^3.0.0"
